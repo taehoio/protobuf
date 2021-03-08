@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build and Push
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -19,6 +19,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Build
+      - name: Build and Push
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 .
+          docker buildx build \
+          --platform linux/amd64,linux/arm64 \
+          -t taehoio/protobuf:${{ github.sha }} \
+          --push \
+          .
