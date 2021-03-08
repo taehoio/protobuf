@@ -9,6 +9,12 @@ RUN go build google.golang.org/protobuf/cmd/protoc-gen-go
 RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
 RUN go build google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
+RUN go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+RUN go build github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+
+RUN go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+RUN go build github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+
 RUN go get \
     github.com/bufbuild/buf/cmd/buf \
     github.com/bufbuild/buf/cmd/protoc-gen-buf-breaking \
