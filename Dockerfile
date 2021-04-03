@@ -1,4 +1,4 @@
-FROM golang:1.16 AS golang
+FROM golang:1.16-alpine3.13 AS golang
 
 WORKDIR /app
 ADD . /app
@@ -25,7 +25,7 @@ RUN go install \
     github.com/bufbuild/buf/cmd/protoc-gen-buf-lint
 
 
-FROM gcr.io/distroless/base
+FROM alpine:3.13
 
 WORKDIR /app
 COPY --from=golang /go/bin /app
